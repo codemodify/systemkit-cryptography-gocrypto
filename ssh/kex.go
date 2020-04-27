@@ -108,7 +108,7 @@ func (group *dhGroup) Client(c packetConn, randSource io.Reader, magics *handsha
 	// SSH-EXT: FIXME: implement
 	//
 	// fmt.Println(fmt.Sprintf("SSH-PATCH-CRYPTO: %s", reflection.GetStackTrace(logPrefixesToRemove)))
-	logging.Instance().Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
+	logging.Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
 
 	hashFunc := crypto.SHA1
 
@@ -170,7 +170,7 @@ func (group *dhGroup) Server(c packetConn, randSource io.Reader, magics *handsha
 	// SSH-EXT: FIXME: implement
 	//
 	// fmt.Println(fmt.Sprintf("SSH-PATCH-CRYPTO: %s", reflection.GetStackTrace(logPrefixesToRemove)))
-	logging.Instance().Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
+	logging.Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
 
 	hashFunc := crypto.SHA1
 	packet, err := c.readPacket()
@@ -248,7 +248,7 @@ func (kex *ecdh) Client(c packetConn, rand io.Reader, magics *handshakeMagics, o
 	// SSH-EXT: FIXME: implement
 	//
 	// fmt.Println(fmt.Sprintf("SSH-PATCH-CRYPTO: %s", reflection.GetStackTrace(logPrefixesToRemove)))
-	logging.Instance().Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
+	logging.Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
 
 	ephKey, err := ecdsa.GenerateKey(kex.curve, rand)
 	if err != nil {
@@ -348,7 +348,7 @@ func (kex *ecdh) Server(c packetConn, rand io.Reader, magics *handshakeMagics, p
 	// SSH-EXT: FIXME: implement
 	//
 	// fmt.Println(fmt.Sprintf("SSH-PATCH-CRYPTO: %s", reflection.GetStackTrace(logPrefixesToRemove)))
-	logging.Instance().Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
+	logging.Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
 
 	packet, err := c.readPacket()
 	if err != nil {
@@ -478,7 +478,7 @@ func (kex *curve25519sha256) Client(c packetConn, rand io.Reader, magics *handsh
 	// SSH-EXT: FIXME: implement
 	//
 	// fmt.Println(fmt.Sprintf("SSH-PATCH-CRYPTO: %s", reflection.GetStackTrace(logPrefixesToRemove)))
-	logging.Instance().Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
+	logging.Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
 
 	var kp curve25519KeyPair
 	if err := kp.generate(rand); err != nil {
@@ -534,7 +534,7 @@ func (kex *curve25519sha256) Server(c packetConn, rand io.Reader, magics *handsh
 	// SSH-EXT: FIXME: implement
 	//
 	// fmt.Println(fmt.Sprintf("SSH-PATCH-CRYPTO: %s", reflection.GetStackTrace(logPrefixesToRemove)))
-	logging.Instance().Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
+	logging.Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
 
 	packet, err := c.readPacket()
 	if err != nil {
@@ -627,7 +627,7 @@ func (gex *dhGEXSHA) Client(c packetConn, randSource io.Reader, magics *handshak
 	// SSH-EXT: FIXME: implement
 	//
 	// fmt.Println(fmt.Sprintf("SSH-PATCH-CRYPTO: %s", reflection.GetStackTrace(logPrefixesToRemove)))
-	logging.Instance().Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
+	logging.Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
 
 	// Send GexRequest
 	kexDHGexRequest := kexDHGexRequestMsg{
@@ -739,7 +739,7 @@ func (gex *dhGEXSHA) Server(c packetConn, randSource io.Reader, magics *handshak
 	// SSH-EXT: FIXME: implement
 	//
 	// fmt.Println(fmt.Sprintf("SSH-PATCH-CRYPTO: %s", reflection.GetStackTrace(logPrefixesToRemove)))
-	logging.Instance().Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
+	logging.Tracef("SSH-PATCH-CRYPTO: %s, from %s", reflection.GetStackTrace(logPrefixesToRemove), reflection.GetThisFuncName())
 
 	// Receive GexRequest
 	packet, err := c.readPacket()
